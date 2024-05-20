@@ -10,18 +10,10 @@
       # Existing package from nixpkgs
       hello = nixpkgs.legacyPackages.x86_64-linux.hello;
 
-      # Custom package
-      myHello = nixpkgs.legacyPackages.x86_64-linux.stdenv.mkDerivation {
-        pname = "myHello";
-        version = "1.0.0";
-        src = ./.;
-        buildInputs = [ ];
-        installPhase = ''
-          mkdir -p $out/bin
-          echo '#!/bin/sh' > $out/bin/myHello
-          echo 'echo Hello, Nix Flakes!' >> $out/bin/myHello
-          chmod +x $out/bin/myHello
-        '';
+
+     # Custom package
+      myHello = import ./myHello.nix {
+        stdenv = nixpkgs.legacyPackages.x86_64-linux.stdenv;
       };
 
       # Another package: cowsay
