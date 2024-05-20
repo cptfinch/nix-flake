@@ -3,11 +3,13 @@
 
 let
   pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  ruby = pkgs.ruby.withPackages (ps: with ps; [
+    rails
+    bundler
+  ]);
 in pkgs.mkShell {
   buildInputs = [
-    pkgs.ruby
-    pkgs.rubyPackages.rails
-    pkgs.rubyPackages.bundler
+    ruby
     pkgs.nodejs
     pkgs.yarn
     pkgs.postgresql
