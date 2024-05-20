@@ -4,8 +4,8 @@
 let
   pkgs = nixpkgs.legacyPackages.x86_64-linux;
   ruby = pkgs.ruby.withPackages (ps: with ps; [
-    rails
-    bundler
+    ps.rails
+    ps.bundler
   ]);
 in pkgs.mkShell {
   buildInputs = [
@@ -23,7 +23,7 @@ in pkgs.mkShell {
   ];
 
   shellHook = ''
-    export PATH=$PATH:${pkgs.rubyPackages.bundler}/bin:${pkgs.ruby}/bin
+    export PATH=$PATH:${pkgs.ruby}/bin
     echo "Welcome to the Ruby on Rails development shell!"
   '';
 }
