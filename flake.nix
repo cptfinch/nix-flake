@@ -19,7 +19,7 @@
     devShells.x86_64-linux = {
       devShell1 = import ./shells/devShell1.nix { inherit nixpkgs self; };
       devShell2 = import ./shells/devShell2.nix { inherit nixpkgs; };
-      barrierDevShell = import ./shells/barrierDevShell.nix { inherit nixpkgs; };
+      barrierDevShell = import ./shells/barrier-dev-shell.nix { inherit nixpkgs; };
     };
   };
 }
