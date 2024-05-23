@@ -20,6 +20,7 @@
       devShell1 = import ./shells/devShell1.nix { inherit nixpkgs self; };
       devShell2 = import ./shells/devShell2.nix { inherit nixpkgs; };
       barrier-dev-shell = import ./shells/barrier-dev-shell.nix { inherit nixpkgs; };
+      pts-dev-shell1 = import ./shells/pts-dev-shell1.nix { inherit nixpkgs; };
     };
   };
 }
